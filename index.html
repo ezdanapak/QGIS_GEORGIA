@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIS Thematic Landing Page</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #f3f3f3;
+            --font-family: 'Arial', sans-serif;
+        }
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            position: relative; /* Added */
+        }
+        #map {
+            height: 80%;
+            width: 100%;
+        }
+        .content {
+            text-align: center;
+            padding: 20px;
+        }
+        .contact-section {
+            background-color: var(--secondary-color);
+            padding: 40px 20px;
+            width: 100%;
+        }
+        .contact-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: #45a049;
+        }
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .social-media a {
+            color: var(--primary-color);
+            font-size: 24px;
+            text-decoration: none;
+        }
+        .social-media a:hover {
+            color: #333;
+        }
+        .logo {
+            position: absolute;
+            top: 0px;
+            left: 10px;
+            width: 150px;
+            height: auto;
+            z-index: 1000;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- QGIS Logo -->
+    <div class="header">
+        <img src="./SVG/QGISGEORGIA.svg" alt="QGIS Logo" class="logo">
+        <h1>Welcome to Our OpenSource GIS Platform</h1>
+        <p>Explore geographical data with our interactive map</p>
+    </div>
+    <div id="map"></div>
+    <div class="content">
+        <h2>About Our GIS Services</h2>
+        <p>Our platform provides powerful tools for geographical data visualization and analysis.</p>
+    </div>
+    <div class="contact-section">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <a href="mailto:contact@example.com">georgia.qgis@gmail.com</a>
+            <div class="social-media">
+                <a href="https://www.facebook.com/groups/GGEORGIA/" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                <a href="https://x.com/i/communities/1525092980054540288" target="_blank"><i class="fab fa-twitter-square"></i></a>
+                <a href="https://www.linkedin.com/groups/13671559/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/gis_georgia/" target="_blank"><i class="fab fa-instagram-square"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([42, 43.87], 7);
+
+        // Add a tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add a marker
+        L.marker([41.75, 44.80]).addTo(map)
+            .bindPopup('QGIS საქართველოს მომხმარებელთა ჯგუფი')
+            .openPopup();
+    </script>
+</body>
+</html>
